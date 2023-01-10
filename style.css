@@ -22,6 +22,7 @@ button {
     display: flex;
     flex: 1;
     align-items: center;
+    justify-content: space-around;
 }
 .pointsContainer {
     display: flex;
@@ -142,11 +143,6 @@ a:hover::after {
     transform: scale(1.1);
 }
 #ending {
-    margin: 0 23vh;
-}
-#playerChoice {
-    margin-left: 20vh;
-}
-#computerChoice {
-    margin-right: 5vh;
+    position: relative;
+    left: 5vh;
 }

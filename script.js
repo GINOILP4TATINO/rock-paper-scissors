@@ -28,6 +28,8 @@ function restartGame() {
     scorec.textContent=`Computer's points: 0`;
     answer1.textContent="";
     answer2.textContent="";
+    playerChoiceOutput.textContent="";
+    computerChoiceOutput.textContent="";
 }
 
 function playerWins(points) {
