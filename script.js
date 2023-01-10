@@ -4,7 +4,6 @@ function gameEnds() {
     scissors.removeEventListener("click", game);
     const restart=document.createElement("button");
     const container=document.querySelector(".space");
-    restart.setAttribute("style", "height: 7vh; width: 400px; font-size: 3vh; background-color: #3882F6; color: #F9FAF8; border: 2px solid black;");
     restart.setAttribute("id", "restart");
     restart.addEventListener("click", restartGame);
     restart.textContent="RESTART";
@@ -27,8 +26,8 @@ function restartGame() {
     scorep.textContent=`Your points: 0`;
     const scorec=document.querySelector(".computerPoints");
     scorec.textContent=`Computer's points: 0`;
-    ending=document.querySelector(".ending");
-    ending.textContent="";
+    answer1.textContent="";
+    answer2.textContent="";
 }
 
 function playerWins(points) {
@@ -37,7 +36,7 @@ function playerWins(points) {
     return points;
 }
 
-function botWins(points) {
+function computerWins(points) {
     const score=document.querySelector(".computerPoints");
     score.textContent=`Computer's points: ${++points}`;
     return points;
@@ -45,47 +44,47 @@ function botWins(points) {
 
 function getComputerChoice() {
     let choice=Math.random()*10;
-    if (choice<3) choice="rock";
-    else if (choice<6) choice="paper";
-    else choice="scissors";
+    if (choice<3) choice="Rock";
+    else if (choice<6) choice="Paper";
+    else choice="Scissors";
     return choice;
 }
 function playRound(target) {
-    ending=document.querySelector(".ending");
     computerChoice=getComputerChoice();
     playerChoice=getPlayerChoice(target);
+    playerChoiceOutput.textContent=`You chose ${playerChoice}`;
+    computerChoiceOutput.textContent=`Computer chose ${computerChoice}`;
     if (computerChoice===playerChoice) {
-        ending.textContent="It's a tie! You both chose "+ computerChoice; 
+        answer1.textContent="It's a tie!"; answer2.textContent="You both chose "+ computerChoice;
     }
-    else if ((computerChoice==="rock" && playerChoice==="paper")||
-    (computerChoice==="paper" && playerChoice==="scissors")||
-    (computerChoice==="scissors" && playerChoice==="rock")) {
-        ending.textContent="You win! "+playerChoice+" beats "+computerChoice;
+    else if ((computerChoice==="Rock" && playerChoice==="Paper")||
+    (computerChoice==="Paper" && playerChoice==="Scissors")||
+    (computerChoice==="Scissors" && playerChoice==="Rock")) {
+        answer1.textContent="You win!"; answer2.textContent=playerChoice+" beats "+computerChoice;
         scorePlayer=playerWins(scorePlayer);
     }
-    else if ((computerChoice==="rock" && playerChoice==="scissors")||
-    (computerChoice==="paper" && playerChoice==="rock")||
-    (computerChoice==="scissors" && playerChoice==="paper")) {
-        ending.textContent="You lose! "+computerChoice+" beats "+playerChoice;
-        scoreComputer=botWins(scoreComputer);
+    else if ((computerChoice==="Rock" && playerChoice==="Scissors")||
+    (computerChoice==="Paper" && playerChoice==="Rock")||
+    (computerChoice==="Scissors" && playerChoice==="Paper")) {
+        answer1.textContent="You lose!"; answer2.textContent=computerChoice+" beats "+playerChoice;
+        scoreComputer=computerWins(scoreComputer);
     }
 }
 function getPlayerChoice(a) {
-    if (a.classList.value=="rock") return "rock";
-    if (a.classList.value=="paper") return "paper";
-    if (a.classList.value=="scissors") return "scissors";
+    if (a.classList.value=="rock") return "Rock";
+    if (a.classList.value=="paper") return "Paper";
+    if (a.classList.value=="scissors") return "Scissors";
 }
 
 function game(e) {
-    const ending=document.querySelector(".ending");
     playRound(this);
     if (scorePlayer===5&&scorePlayer>scoreComputer) {
-        ending.textContent=`You won the game! You have ${scorePlayer} while the computer's are ${scoreComputer}`;
+        answer1.textContent=`You won the game!`; answer2.textContent=`You have ${scorePlayer} while the computer's are ${scoreComputer}`;
         gScorePlayer++;
         gameEnds();
     }
     else if (scoreComputer===5&&scorePlayer<scoreComputer) {
-        ending.textContent=`You lost the game! You have ${scorePlayer} points while the computer's are ${scoreComputer}`;
+        answer1.textContent=`You lost the game!`; answer2.textContent=`You have ${scorePlayer} points while the computer's are ${scoreComputer}`;
         gScoreComputer++;
         gameEnds();
     }
@@ -94,6 +93,18 @@ let scorePlayer=0, scoreComputer=0, gScorePlayer=0, gScoreComputer=0;
 const rock=document.querySelector(".rock");
 const paper=document.querySelector(".paper");
 const scissors=document.querySelector(".scissors");
+const credits=document.querySelector("a");
+const logo=document.getElementById("gitLogo");
+const playerChoiceOutput=document.getElementById("playerChoice");
+const computerChoiceOutput=document.getElementById("computerChoice");
+const answer1=document.getElementById("answer1");
+const answer2=document.getElementById("answer2");
 rock.addEventListener("click", game);
 paper.addEventListener("click", game);
 scissors.addEventListener("click", game);
+credits.addEventListener("mouseover", () => {
+    logo.classList.add("hover");
+});
+credits.addEventListener("mouseout", () => {
+    logo.classList.remove("hover");
+});
