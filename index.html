@@ -1,34 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Rock Paper Scissors</title>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="main">
-        <div class="title">Rock Paper Scissors</div>
-        <div class="buttons">
-            <button class="rock"><img src="rock.png" alt=""></button>
-            <button class="paper"><img src="paper.png" alt=""></button>
-            <button class="scissors"><img src="scissors.png" alt=""></button>
+      <div class="title">Rock Paper Scissors</div>
+      <div class="buttons">
+        <button class="rock"><img src="./images/rock.png" alt="" /></button>
+        <button class="paper"><img src="./images/paper.png" alt="" /></button>
+        <button class="scissors">
+          <img src="./images/scissors.png" alt="" />
+        </button>
+      </div>
+      <div class="pointsContainer">
+        <p class="playerPoints">Your points: 0</p>
+        <p class="computerPoints">Computer's points: 0</p>
+      </div>
+      <div class="output">
+        <div class="ending" id="playerChoice"></div>
+        <div class="ending" id="ending">
+          <div id="answer1"></div>
+          <div id="answer2"></div>
         </div>
-        <div class="pointsContainer">
-            <p class="playerPoints">Your points: 0</p>
-            <p class="computerPoints">Computer's points: 0</p>
-        </div> 
-        <div class="output">
-            <div class="ending" id="playerChoice"></div>
-            <div class="ending" id="ending"><div id="answer1"></div><div id="answer2"></div></div>
-            <div class="ending" id="computerChoice"></div>
-        </div>
+        <div class="ending" id="computerChoice"></div>
+      </div>
     </div>
     <div class="space"></div>
     <div class="footer">
-        <div class="content"><div class="playerWins ff">You won 0 games</div>
-            <div class="computerWins ff">Computer won 0 games</div></div>
-        <div class="credContainer"><div class="credits">Made by: <a href="https://github.com/GINOILP4TATINO">GINO_IL_P4TATINO <img src="github_PNG40.png" alt="logo" id="gitLogo"></a></div></div>
+      <div class="content">
+        <div class="playerWins ff">You won 0 games</div>
+        <div class="computerWins ff">Computer won 0 games</div>
+      </div>
+      <div class="credContainer">
+        <div class="credits">
+          Made by:
+          <a href="https://github.com/GINOILP4TATINO"
+            >GINO_IL_P4TATINO
+            <img src="./images/github_PNG40.png" alt="logo" id="gitLogo"
+          /></a>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
